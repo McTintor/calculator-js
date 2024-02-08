@@ -76,24 +76,29 @@ document.querySelector('.container').addEventListener('click', function(event) {
 function add (num1, num2) {
     final = parseFloat(num1) + parseFloat(num2);
     total.textContent = final;
+    inputString = final;
 }
 
 function subtract (num1, num2) {
     final = parseFloat(num1) - parseFloat(num2);
     total.textContent = final;
+    inputString = final;
 }
 
 function multiply (num1, num2) {
     final = parseFloat(num1) * parseFloat(num2);
     total.textContent = final;
+    inputString = final;
 }
 
 function divide (num1, num2) {
     if (parseFloat(num2) === 0) {
-        return total.textContent = "Can't divide by 0 bud";
+        total.textContent = "Can't divide by 0 bud";
+        setTimeout(clear, 3000);
     } else {
         final = parseFloat(num1) / parseFloat(num2);
         total.textContent = final;
+        inputString = final;
     }
 }
 
@@ -101,20 +106,25 @@ function percent(num1, num2, operator) {
     if (operator === '+') {
         final = parseFloat(num1) + (parseFloat(num1) * (parseFloat(num2) / 100));
         total.textContent = final;
+        inputString = final;
     } else if (operator === '-') {
         final = parseFloat(num1) - (parseFloat(num1) * (parseFloat(num2) / 100));
         total.textContent = final;
+        inputString = final;
     } else if (operator === 'X') {
         final = parseFloat(num1) * (parseFloat(num2) / 100);
         total.textContent = final;
+        inputString = final;
     } else if (operator === '/') {
         if (parseFloat(num2) === 0) {
             total.textContent = "Error: Division by zero";
+            setTimeout(clear, 3000);
         }
         final = parseFloat(num1) / (parseFloat(num2) / 100);
         total.textContent = final;
     } else {
         total.textContent = "Error: Invalid operator";
+        setTimeout(clear, 3000);
     }
 }
 
