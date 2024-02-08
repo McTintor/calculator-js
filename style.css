@@ -1,0 +1,48 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(234, 247, 247);
+}
+.container {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    border: 2px solid black;
+    border-radius: 1rem;
+    padding: 5% 0;
+    margin: 0;
+    background-color: #e0deeb;
+}
+
+.btn {
+    width: 20%;
+    background-color: beige;
+    font-size: large;
+    border: 1px solid gray;
+    border-radius: 1rem;
+}
+
+.btn:hover {
+    font-weight: bold;
+    background-color: gold;
+}
+
+.screen {
+    width: 100%;
+    border: 1px solid gray;
+    background-color: white;
+    text-align: right;
+    font-size: 36px;
+}
+
+.row {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    height: 40px;
+}
