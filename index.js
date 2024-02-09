@@ -9,7 +9,7 @@ document.querySelector('#C').addEventListener("click", clear);
 document.querySelector('#back').addEventListener("click", back);
 
 document.querySelector('.container').addEventListener('click', function(event) {
-    
+ 
     
     if  (event.target.id === 'one') {
         inputString += '1';
@@ -50,26 +50,27 @@ document.querySelector('.container').addEventListener('click', function(event) {
     } else if (event.target.id === 'X') {
         inputString += 'X';
         total.textContent += ' X ';
+        chainOperations();
     } else if (event.target.id === 'divide') {
         inputString += '/';
         total.textContent += ' ÷ ';
+        chainOperations();
     } else if (event.target.id === 'plus') {
         inputString += '+';
         total.textContent += ' + ';
+        chainOperations();
     } else if (event.target.id === 'minus') {
         inputString += '-';
         total.textContent += ' - ';
+        chainOperations();
     } else if (event.target.id === 'percentage') {
         inputString += '%';
         total.textContent += ' % ';
     } else if (event.target.id === 'equals') {
         inputString += '=';
         total.textContent += ' = ';
-        const elements = inputString.split(/[+\-X/]/);
-        num1 = parseFloat(elements[0]);
-        operator = inputString.match(/[+\-X/]/)[0];
-        num2 = parseFloat(elements[1]);
-        calculate(num1, num2, operator);
+
+        handleEquals();
     }
 });
 
@@ -99,6 +100,43 @@ function divide (num1, num2) {
         final = parseFloat(num1) / parseFloat(num2);
         total.textContent = final;
         inputString = final;
+    }
+}
+
+function handleEquals () {
+    if (inputString[inputString.length - 2] === '%') {
+        const elements = inputString.split(/[+\-X/]/);
+    num1 = parseFloat(elements[0]);
+    let operator1 = inputString.match(/[+\-X/]/)[0];
+    num2 = parseFloat(elements[1].slice(0, -1));
+    let operator2 = inputString.match('%')[0];
+    calculate(num1, num2, operator1, operator2);
+    } else {
+
+    const elements = inputString.split(/[+\-X/]/);
+    num1 = parseFloat(elements[0]);
+    operator = inputString.match(/[+\-X/]/)[0];
+    num2 = parseFloat(elements[1]);
+    calculate(num1, num2, operator);
+    }
+}
+
+//chainOperations doesn't work :( //
+
+function chainOperations () {
+    const operators = inputString.match(/[+\-X/]/g);
+    if (operators && operators.length === 2) {
+        const elements = inputString.split(/[+\-X/]/);
+        num1 = parseFloat(elements[0]);
+        const operator1 = operators[0];
+        num2 = parseFloat(elements[1]);
+        const operator2 = operators[1];
+        
+        let result = calculate(num1, num2, operator1);
+        calculate(result, num2, operator2);
+        
+    } else {
+        console.log("Invalid input");
     }
 }
 
