@@ -34,11 +34,3 @@ To use the calculator, simply open the `index.html` file in a web browser. You c
 4. Click on the equals button to see the result.
 5. Click on the all-clear button to clear the calculator's state.
 6. Click on the delete button to remove the last digit entered.
-
-## Contributing
-
-Contributions are welcome! If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
